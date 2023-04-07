@@ -1,20 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { RecoilRoot } from 'recoil';
+import FirstScreen from './Screens/FirstScreen';
+import SecondScreen from './Screens/SecondScreen';
+import ThirdScreen from './Screens/ThirdScreen';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <RecoilRoot>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='FirstScreen' >
+          <Stack.Screen name='FirstScreen' component={FirstScreen} 
+          options={{
+            headerShown:false,
+          }}
+          ></Stack.Screen>
+          <Stack.Screen name='SecondScreen' component={SecondScreen} 
+          options={{
+            headerShown:false,
+          }}
+          ></Stack.Screen>
+          <Stack.Screen name='ThirdScreen' component={ThirdScreen} 
+          options={{
+            headerShown:false,
+          }}
+          ></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </RecoilRoot>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
